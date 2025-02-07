@@ -1,0 +1,79 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+.fenv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs & Debug
+*.log
+logs/
+debug.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# MQTT Credentials & Configs (if stored in JSON or ENV files)
+config.json
+*.env
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Data files
+data/
+*.csv
+*.db
+*.sqlite
+*.sqlite3
+
+# MQTT & Message Queues
+*.pid
+*.sock
+*.mq
+mosquitto.conf
+
+# Ignore compiled C extensions (if used)
+*.so
+*.dll
+
+# Ignore firmware binaries (if applicable)
+*.bin
+*.hex
+
+# Raspberry Pi-specific system files
+*.elf
+*.dtb
+*.dtbo
+
+# Ignore application-specific cache & build artifacts
+dist/
+build/
+*.egg-info/
+site/
+node_modules/
+
+# Ignore test coverage reports
+.coverage
+htmlcov/
+*.cover
+.cache
+
+# Ignore private scripts (if applicable)
+private/

@@ -1,0 +1,47 @@
+{
+    "message": "Test",
+    "fermentation": {
+        "stages_numbers": 3,
+        "schedule": [
+            {
+                "stage": "Other Stage",
+                "temperature": {
+                    "value": 40,
+                    "unit": "Celsius"
+                },
+                "pressure": {
+                    "value": 24,
+                    "unit": "psi"
+                },
+                "time": {
+                    "value": 5,
+                    "unit": "days"
+                },
+                "additive": {
+                    "name": "Yeast Nutrient",
+                    "value": 2,
+                    "unit": "g"
+                },
+                "comments": "Start primary fermentation"
+            }
+        ],
+        "remarks": "Standard Ale Fermentation",
+        "stage": "cold",
+        "temperature": {
+            "value": 0.5,
+            "unit": "Celsius"
+        },
+        "pressure": {
+            "value": 15,
+            "unit": "psi"
+        },
+        "time": {
+            "value": 5,
+            "unit": "days"
+        }
+    },
+    "recipe_data": {
+        "id": "ABC123",
+        "name": "Test Brew3"
+    }
+}
