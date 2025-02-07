@@ -169,7 +169,9 @@ expected output
    Loaded: loaded (/etc/systemd/system/start_button.service; enabled)
    Active: active (running) since ...
 
-##
+### stop start_button.py script manually
+sudo systemctl stop start_button.service
+
 
 # send command to Chamber
 mosquitto_pub -h 192.168.0.209 -t "/control/fermentation_chamber/controller/2B3C4D" -m '{

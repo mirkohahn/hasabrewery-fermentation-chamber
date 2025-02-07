@@ -50,6 +50,7 @@ def setup():
 
     # Set up Button as input with an internal pull-up resistor
     GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    stop()
 
 def loop():
     """Main loop to monitor button and control LED."""
