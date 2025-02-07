@@ -117,6 +117,7 @@ turn on all
 
 turn off PORT_NO
 sudo uhubctl -a off -l 1-1 -p PORT_NO
+sudo uhubctl -a off -l 1-1 -p 2
 ´
 turn on PORT_NO
 sudo uhubctl -a on -l 1-1 -p PORT_NO
@@ -131,7 +132,46 @@ fan_control.py
 ### downloadable stl files for 3d printing house
 
 
+# PRIOR to assembly -> Auto - Start
+when all up and running ensure, system auto starts on boot 
 
+add start_button.py to systemd for autostart when starting in bg automatically and restart after crash
+sudo nano /etc/systemd/system/start_button.service
+
+add
+````
+[Unit]
+Description=Start Button for Fermentation Chamber
+After=multi-user.target
+
+[Service]
+ExecStart=/home/brewmaster/fermentation-venv/bin/python3 /home/brewmaster/Desktop/hasabrewery-fermentation-chamber/start_button.py
+WorkingDirectory=/home/brewmaster/Desktop/hasabrewery-fermentation-chamber
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=brewmaster
+
+[Install]
+WantedBy=multi-user.target
+````
+
+run
+sudo systemctl daemon-reload
+sudo systemctl enable start_button.service
+sudo systemctl start start_button.service
+
+check if services are running
+sudo systemctl status start_button.service
+
+expected output
+● start_button.service - Start Button for Fermentation Chamber
+   Loaded: loaded (/etc/systemd/system/start_button.service; enabled)
+   Active: active (running) since ...
+
+##
+
+# send command to Chamber
 mosquitto_pub -h 192.168.0.209 -t "/control/fermentation_chamber/controller/2B3C4D" -m '{
     "message": "Test",
     "fermentation": {

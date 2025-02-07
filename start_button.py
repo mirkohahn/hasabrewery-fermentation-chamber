@@ -5,6 +5,7 @@ import signal
 import subprocess
 import relay_control  # Import relay control module
 import display
+import fan_control
 
 # Pin Definitions
 BUTTON_PIN = 16  # GPIO 16 (Pin 36)
@@ -29,6 +30,7 @@ def stop():
     print("🌙 stop() called, stopping fermentation chamber and turning off relays")
     relay_control.turn_cooler_off()
     relay_control.turn_heater_off()
+    fan_control.turn_fans_off()
     display.clear_display()  # Clear welcome message but keep display on
 
 
