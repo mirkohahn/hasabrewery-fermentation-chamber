@@ -13,7 +13,7 @@ def get_log_file():
 
 # Buffer to hold log entries before writing
 log_buffer = []
-BUFFER_SIZE = 5
+BUFFER_SIZE = 1
 
 
 
