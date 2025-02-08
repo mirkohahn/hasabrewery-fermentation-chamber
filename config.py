@@ -1,9 +1,9 @@
 import os
 
 CONFIG = {
-"FIRMWARE_VERSION":"0.6.1",                         # do not change - will be changed in main branch
+"FIRMWARE_VERSION":"0.7.0",                         # do not change - will be changed in main branch
     # Missing to V1.0:
-        # V0.7 SHUTDOWN SENSOR 
+        
         # V0.8 DOOR SENSOR, 
         # V0.9 IMPERIAL UNITS, 
         # V1.0 FINAL TEST & IMPROVEMENTS
