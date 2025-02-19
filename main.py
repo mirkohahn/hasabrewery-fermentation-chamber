@@ -16,6 +16,8 @@ import mqtt_subscriber
 import control_logic
 import log_handler
 import fan_control
+import led_status_handler as led
+
 
 # Global variable for MQTT interval tracking
 last_mqtt_time = time.time()
@@ -23,6 +25,11 @@ last_mqtt_time = time.time()
 def initialization_sequence():
     # """Run system initialization: Welcome message, relays off, turn cooler ON."""
     # print("🚀 Starting fermentation chamber controller...")
+    
+    # Handle Status LEDs
+    # led.turn_on_wifi_red()
+    # led.turn_on_mqtt_red()
+    # led.turn_on_sensor_red()
 
     # 1️⃣ Initialize and show welcome message
     display.init_display()
@@ -42,6 +49,7 @@ def main_loop():
 
     while True:
         loop_start_time = time.time()
+        # led.turn_on_sensor_green()
         
 
         # 1️⃣ Get temperature readings

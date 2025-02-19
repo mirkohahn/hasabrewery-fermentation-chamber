@@ -3,6 +3,8 @@ import sys
 import json
 import paho.mqtt.client as mqtt
 from threading import Lock
+import led_status_handler as led
+
 
 # Ensure the parent directory is accessible
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
@@ -49,6 +51,7 @@ def on_connect(client, userdata, flags, rc, properties):
     """ Callback when connecting to MQTT broker """
     if rc == 0:
         print(f"Connected to MQTT Broker: {config.CONFIG['MQTT_BROKER']}")
+        # led.turn_on_mqtt_green()
         client.subscribe(SUBSCRIBE_TOPIC)
     else:
         print(f"Failed to connect, return code {rc}")

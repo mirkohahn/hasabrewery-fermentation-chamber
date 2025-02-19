@@ -12,18 +12,18 @@ CONFIG = {
     
 # <--- M Q T T   S E T U P   &   S T R U C T U R E --->
     # "MQTT_BROKER": "your.host.ip",                 # Replace with your broker IP/hostname
-    "MQTT_BROKER": "192.168.0.209",                 # Replace with your broker IP/hostname
+    "MQTT_BROKER": "192.168.0.56",                 # Replace with your broker IP/hostname
     "MQTT_PORT": 1883,                              # Default MQTT port; change if needed
     
     "LOGIC_BREWERY_COMPONENT": "fermentation_chamber",
     "DEVICE_TYPE": "controller",
-    "DEVICE_ID": "2B3C4D",                          # Replace with your device ID; Reocmmended: Random 6-digit hex
+    "DEVICE_ID": "9BEB4E",                          # Replace with your device ID; Reocmmended: Random 6-digit hex
     
-    "INTERVAL_LENGTH": 10,                          # transmits an mqtt message roughly every [x] seconds
+    "INTERVAL_LENGTH": 1,                          # transmits an mqtt message roughly every [x] seconds
 
 # <--- L O G F I L E & D A T A   S T O R A G E --->
     "DATA_STORAGE_FILE": "data/state.json",         
-    "LOG_INTERVALL_LENGTH": 10,                      # write to csv log every [x] seconds
+    "LOG_INTERVALL_LENGTH": 1,                      # write to csv log every [x] seconds
 
 
 # <--- T H E R M O M E T E R   D S 1 8 B 2 0 --->    

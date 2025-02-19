@@ -1,20 +1,20 @@
 {
-    "message": "Test",
+    "message": null,
     "fermentation": {
-        "stages_numbers": 3,
+        "stages_numbers": 1,
         "schedule": [
             {
-                "stage": "Other Stage",
+                "stage": "Neipa Cold",
                 "temperature": {
-                    "value": 40,
+                    "value": 1,
                     "unit": "Celsius"
                 },
                 "pressure": {
-                    "value": 24,
+                    "value": null,
                     "unit": "psi"
                 },
                 "time": {
-                    "value": 5,
+                    "value": null,
                     "unit": "days"
                 },
                 "additive": {
@@ -42,6 +42,6 @@
     },
     "recipe_data": {
         "id": "ABC123",
-        "name": "Test Brew3"
+        "name": "NEIPA"
     }
 }

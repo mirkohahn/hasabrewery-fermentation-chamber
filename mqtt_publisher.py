@@ -5,8 +5,10 @@ import subprocess
 from datetime import datetime
 import control_logic
 import fan_control
+import led_status_handler as led
 
-PUBLISH_TOPIC = f"/receive/{config.CONFIG['LOGIC_BREWERY_COMPONENT']}/{config.CONFIG['DEVICE_TYPE']}/{config.CONFIG['DEVICE_ID']}"
+
+PUBLISH_TOPIC = f"receive/{config.CONFIG['LOGIC_BREWERY_COMPONENT']}/{config.CONFIG['DEVICE_TYPE']}/{config.CONFIG['DEVICE_ID']}"
 
 def get_rssi():
     """Retrieve the WiFi signal strength (RSSI)."""
@@ -23,6 +25,7 @@ def publish_status(temp_data, control_status):
     """Publish fermentation chamber status to MQTT."""
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
     client.connect(config.CONFIG["MQTT_BROKER"], config.CONFIG["MQTT_PORT"], 60)
+    # led.turn_on_mqtt_green()
 
     # Get additional data
     goal_brew_temp = control_logic.get_goal_brew_temp()
@@ -30,23 +33,26 @@ def publish_status(temp_data, control_status):
     goal_chamber_temperature = control_logic.goal_chamber_temperature  # From global variable
 
     payload = json.dumps({
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "temp_ambient": temp_data["temp_ambient"],
-        "temp_brew": temp_data["temp_brew"],
-        "temp_top": temp_data["temp_top"],
-        "temp_bottom": temp_data["temp_bottom"],
-        "goal_brew_temp": goal_brew_temp,
-        "goal_chamber_temperature": goal_chamber_temperature,
-        "heater": control_status["heater"],
-        "cooler": control_status["cooler"],
-        "fan": fan_status,
-        "status": {
-            "status_message": "OK",
-            "transmission_type": config.CONFIG["TRANSMISSION_TYPE"],
-            "RSSI": get_rssi(),
-            "firmware_version": config.CONFIG["FIRMWARE_VERSION"]
-        }
-    })
+    "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    "values": [         
+        {"temp_ambient": temp_data["temp_ambient"]},
+        {"temp_brew": temp_data["temp_brew"]},
+        {"temp_top": temp_data["temp_top"]},
+        {"temp_bottom": temp_data["temp_bottom"]},
+        {"goal_brew_temp": goal_brew_temp},
+        {"goal_chamber_temperature": goal_chamber_temperature},
+        {"heater": bool(control_status["heater"])},
+        {"cooler": bool(control_status["cooler"])},
+        {"fan": bool(fan_status)}
+    ],
+    "status": {
+        "status_message": "OK",
+        "transmission_type": config.CONFIG["TRANSMISSION_TYPE"],
+        "RSSI": get_rssi(),
+        "firmware_version": config.CONFIG["FIRMWARE_VERSION"]
+    }
+})
+
 
     client.publish(PUBLISH_TOPIC, payload)
     client.disconnect()
